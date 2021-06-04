@@ -18,7 +18,8 @@ jobs:
 
       ## Customize dependencies
 #      - run: "~/nvm/"
-#      - run: "~/.npm/"
+      - run: sudo apt-get update
+      - run: sudo apt-get install python3.6
       - run: aws --version
       - run: sudo pip install awscli
 
