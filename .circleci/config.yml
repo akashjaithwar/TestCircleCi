@@ -19,9 +19,8 @@ jobs:
       ## Customize dependencies
 #      - run: "~/nvm/"
 #      - run: "~/.npm/"
-      - run: openssl s_client -connect pypi.python.org:443
-      - run: openssl s_client -connect pypi.org:443
-      - run: openssl s_client -connect files.pythonhosted.org:44 
+      - run: pip --version
+      - run: python -m pip install -U pip
       - run: sudo pip install awscli
 
 #- ./dev-ops/buildscripts/runTests.sh "https://web-dev.bridgestonehub.com/"
