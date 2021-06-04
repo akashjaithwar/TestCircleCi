@@ -8,7 +8,7 @@ jobs:
       #Set the timezone
       TZ: "/usr/share/zoneinfo/America/New_York"
     python:
-      version: 2.7.6
+      version: 3.6.8
     ## Customize checkout
     steps:
       - checkout
