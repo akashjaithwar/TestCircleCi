@@ -17,27 +17,17 @@ jobs:
       - run: git submodule update --remote
 
       ## Customize dependencies
-      - run: sudo add-apt-repository ppa:deadsnakes/ppa
-      - run: sudo apt-get update
-      - run: sudo apt-get install python3.6
       - run: aws --version
-      - run: sudo pip install awscli==1.18.105
+      - run: sudo dpkg -r awscli
+      - run: cd /tmp 
+      - run: sudo wget "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"
+      - run: sudo apt update 
+      - run: sudo apt install -y unzip
+      - run: sudo unzip awscli-exe-linux-x86_64.zip
+      - run: sudo ./aws/install -i /usr/local/aws-cli -b /usr/local/bin
+      - run: export PATH=$PATH:/usr/local/bin
+      - run: aws configure list
       - run: aws --version
+      - run: aws sts get-caller-identity
 
-#- ./dev-ops/buildscripts/runTests.sh "https://web-dev.bridgestonehub.com/"
 
-#          qa:
-#            branch: qa
-#           commands:
-#              - run : echo deploying to us-east-1 && ./dev-ops/buildscripts/deploy.sh -a java -t quick -e qa -ci circle -r us-east-1
-#             - run : echo deploying to ap-northeast-1 && ./dev-ops/buildscripts/deploy.sh -a java -t quick -e qa -ci circle -r ap-northeast-1
-#- ./dev-ops/buildscripts/runTests.sh "https://web-qa.bridgestonehub.com/"
-
-#          master:
-#            branch: master
-#            commands:
-#              - run : echo deploying to us-east-1 && ./dev-ops/buildscripts/deploy.sh -a java -t full -e prd -ci circle -r us-east-1
-#              - run : echo deploying to ap-northeast-1 && ./dev-ops/buildscripts/deploy.sh -a java -t full -e prd -ci circle -r ap-northeast-1
-#- ./dev-ops/buildscripts/runTests.sh "https://www.bridgestonehub.com/"
-
-## Custom notifications
