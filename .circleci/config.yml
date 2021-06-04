@@ -20,7 +20,7 @@ jobs:
 #      - run: "~/nvm/"
 #      - run: "~/.npm/"
       - run: pip --version
-      - run: python -m pip install -U pip
+      - run: aws --version
       - run: sudo pip install awscli
 
 #- ./dev-ops/buildscripts/runTests.sh "https://web-dev.bridgestonehub.com/"
