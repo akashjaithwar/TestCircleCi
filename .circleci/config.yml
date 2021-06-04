@@ -19,15 +19,7 @@ jobs:
       ## Customize dependencies
 #      - run: "~/nvm/"
 #      - run: "~/.npm/"
-      - run:
-          name: Installing deployment dependencies
-          working_directory: ~/repo
-          command: |
-            sudo apt-get -y -qq update
-            sudo apt-get install python3-pip python3-dev build-essential
-            sudo aws --version
-            sudo pip install "urllib3<1.23,>=1.21.1" awsebcli --upgrade
-            sudo pip install awscli 
+      - run: aws ec2 describe-instances --filters "Name=instance-type,Values=t2.micro" --query "Reservations[].Instances[].InstanceId"
       - run: sudo pip install awscli
 
 #- ./dev-ops/buildscripts/runTests.sh "https://web-dev.bridgestonehub.com/"
